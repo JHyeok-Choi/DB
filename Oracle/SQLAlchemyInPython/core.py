@@ -52,13 +52,27 @@ try:
     print("=" * 20) # 4-3. UPDATE 문
     for no, column in enumerate(columns):
         if no == 0:
-            print(f"UPDATE {table}\nSET\t{column['name']} = \'\'")
+            print(f"UPDATE {table}")
+        elif no == 1:
+            print(f"SET\t{column['name']} = :{column['name']}")
         else:
-            print(f",\t{column['name']} = \'\'")
-    print("WHERE\ttest = \'\'")
+            print(f",\t{column['name']} = :{column['name']}")
+    print(f"WHERE\t{columns[0]['name']} = :{columns[0]['name']}")
+    for no, column in enumerate(columns):
+        if no == 0:
+            print("[{" + f"\'{column['name']}\': \'\'", end="")
+        else:
+            print(f", \'{column['name']}\': \'\'", end="")
+    print("}]")
     print("=" * 20) # 4-4. DELETE 문
     print(f"DELETE FROM {table}")
-    print("WHERE\ttest = \'\'")
+    print(f"WHERE\t{columns[0]['name']} = :{columns[0]['name']}")
+    for no, column in enumerate(columns):
+        if no == 0:
+            print("[{" + f"\'{column['name']}\': \'\'", end="")
+        else:
+            print(f", \'{column['name']}\': \'\'", end="")
+    print("}]")
     print("=" * 20)
 except Exception as e:
     print(f"Error: {e}")
@@ -84,12 +98,13 @@ SELECT  no
 FROM    test_table
 ====================
 UPDATE test_table
-SET     no = ''
-,       name = ''
-WHERE   test = ''
+SET     name = :name
+WHERE   no = :no
+[{'no': '', 'name': ''}]
 ====================
 DELETE FROM test_table
-WHERE   test = ''
+WHERE   no = :no
+[{'no': '', 'name': ''}]
 ====================
 
 """
