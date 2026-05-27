@@ -8,7 +8,8 @@ or
 
 #### Oracle 12C
 ALTER SESSION SET "_ORACLE_SCRIPT"=true;
-CREATE USER test IDENTIFED BY test;
+
+CREATE USER test IDENTIFIED BY test;
 
 
 ## 권한부여
