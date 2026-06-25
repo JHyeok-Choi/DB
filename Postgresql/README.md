@@ -1,4 +1,4 @@
-# Postgresql
+# PostgreSQL
 
 ## PostgreSQL 접속
 
@@ -8,7 +8,7 @@ sudo -i -u postgres psql
 ## 관리자 비밀번호 변경
 
 \password postgres
-(사용할 비밀번호를 두 번 입력하세요.)
+ (사용할 비밀번호를 두 번 입력)
 
 
 ## 사용자, DB 생성
